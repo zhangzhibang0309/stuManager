@@ -6,6 +6,8 @@ const {
   deleteStu,
   addStu,
   queryStuDetail,
+  updateIntro,
+  updateImg
 } = require("../controller/stu.controller");
 
 // stu接口
@@ -25,5 +27,11 @@ stuRouter.post("/add", addStu);
 
 // 查询单个学生详细信息
 stuRouter.get("/querystudetail/:id", queryStuDetail);
+
+// 修改单个学生自我介绍
+stuRouter.post("/updateintro", updateIntro);
+
+// 修改单个学生的图片
+stuRouter.post("/updateimg", updateImg);
 
 module.exports = stuRouter;

@@ -24,19 +24,67 @@
     <br />
     <div>
       <h2 id="introduce">个人介绍</h2>
+      <el-button @click="updateIntroOpen" type="primary" plain
+        >修改个人介绍</el-button
+      >
+      <el-button @click="updateImgOpen" type="success" plain
+        >修改照片</el-button
+      >
     </div>
 
-    <div style="   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    <!-- drawer -->
+    <div>
+      <!-- 修改 -->
+      <el-drawer title="我是标题" :visible.sync="drawer1" :with-header="false">
+        <el-form
+          :label-position="labelPosition"
+          label-width="80px"
+          :model="formLabelAlign1"
+        >
+          <el-form-item label="个人介绍">
+            <el-input v-model="formLabelAlign1.stu_info"></el-input>
+          </el-form-item>
+          <el-button type="primary" @click="updateIntroConfirm">提交</el-button>
+        </el-form>
+      </el-drawer>
+      <!-- 修改照片 -->
+      <el-drawer title="我是标题" :visible.sync="drawer2" :with-header="false">
+        <el-form
+          :label-position="labelPosition"
+          label-width="80px"
+          :model="formLabelAlign1"
+        >
+          <el-form-item label="图片链接">
+            <el-input v-model="formLabelAlign2.stu_img"></el-input>
+          </el-form-item>
+          <el-button type="primary" @click="updateImgConfirm">提交</el-button>
+        </el-form>
+      </el-drawer>
+    </div>
+
+    <div
+      style="
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         width: 92%;
-        margin: 0 auto;">
-      <div style="width: 50%; margin: 0 auto; float: left;margin-top:10%;margin-left:2%">
-      <span>{{ this.tableData[0].stu_info }}</span>
-      <el-divider content-position="right">{{
-        this.tableData[0].name
-      }}</el-divider>
-    </div>
+        margin: 0 auto;
+      "
+    >
+      <div
+        style="
+          width: 50%;
+          margin: 0 auto;
+          float: left;
+          margin-top: 10%;
+          margin-left: 2%;
+        "
+      >
+        <span>{{ this.tableData[0].stu_info }}</span>
+        <el-divider content-position="right">{{
+          this.tableData[0].name
+        }}</el-divider>
+      </div>
 
-    <img id="img" :src="this.tableData[0].stu_img" alt="" />
+      <img id="img" :src="this.tableData[0].stu_img" alt="" />
     </div>
   </div>
 </template>
@@ -50,14 +98,57 @@ export default {
     return {
       tableData: [],
       idData: 0,
+      drawer1: false,
+      drawer2: false,
+      labelPosition: "top",
+      formLabelAlign1: {
+        stu_info: "",
+        id: 0,
+      },
+      formLabelAlign2: {
+        stu_img: "",
+        id: 0,
+      },
     };
   },
   computed: {
     StuId() {
-      return this.$route.params.id;
+      return parseInt(this.$route.params.id);
     },
   },
-  methods: {},
+  methods: {
+    // 修改个人介绍按钮
+    updateIntroOpen() {
+      this.drawer1 = true;
+    },
+    // 修改照片按钮
+    updateImgOpen() {
+      this.drawer2 = true;
+    },
+    // 确认修改个人介绍
+    updateIntroConfirm() {
+      let data = this.formLabelAlign1;
+      data.id = parseInt(this.$route.params.id);
+
+      axios
+        .post("http://localhost:1123/stu/updateintro", data)
+        .then((res) => {
+          location.reload();
+        })
+        .catch((err) => {});
+    },
+    updateImgConfirm() {
+      let data = this.formLabelAlign2;
+      data.id = parseInt(this.$route.params.id);
+
+      axios
+        .post("http://localhost:1123/stu/updateimg", data)
+        .then((res) => {
+          location.reload();
+        })
+        .catch((err) => {});
+    },
+  },
   created() {
     axios
       .get("http://localhost:1123/stu/querystudetail/" + this.StuId)
@@ -75,6 +166,7 @@ export default {
 #introduce {
   margin-left: 5%;
   margin-bottom: 1%;
+  display: inline-block;
 }
 #img {
   width: 40%;

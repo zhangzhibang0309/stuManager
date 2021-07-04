@@ -151,7 +151,9 @@ export default {
       let data = this.formLabelAlignAdd;
       axios
         .post("http://localhost:1123/stu/add", data)
-        .then((res) => {})
+        .then((res) => {
+          location.reload()
+        })
         .catch((err) => {});
       this.drawerAdd = false;
     },
@@ -166,7 +168,9 @@ export default {
       let data = this.formLabelAlign;
       axios
         .post("http://localhost:1123/stu/update", data)
-        .then((res) => {})
+        .then((res) => {
+          location.reload()
+        })
         .catch((err) => {});
       this.drawer = false;
     },
@@ -176,7 +180,10 @@ export default {
       data.id = row.id;
       axios
         .post("http://localhost:1123/stu/delete", data)
-        .then((res) => {})
+        .then((res) => {
+          location.reload()
+
+        })
         .catch((err) => {});
     },
     // 查看详细信息

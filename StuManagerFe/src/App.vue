@@ -4,7 +4,6 @@
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
-      @select="handleSelect"
       router
     >
       <el-menu-item index="/index">主页</el-menu-item>
@@ -12,7 +11,7 @@
       <el-submenu index="2">
         <template slot="title">学生</template>
         <div v-for="(item,index) in stuList" :key="index">
-          <el-menu-item :index="'/studetail/' + item.id">{{item.name}}</el-menu-item>
+          <el-menu-item @click="reload()" :index="'/studetail/' + item.id">{{item.name}}</el-menu-item>
         </div>
       </el-submenu>
       <el-menu-item index="/majorcourse">专业及其课程展示</el-menu-item>
@@ -38,9 +37,8 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      // console.log(key, keyPath);
-      // location.reload()
+    reload() {
+      location.reload()
     },
   },
   created() {

@@ -49,14 +49,31 @@ class StuService {
   }
   // 查询单个学生详细信息
   async queryStuDetail(student) {
-    const  id  = student;
+    const id = student;
 
     const statement = `SELECT * FROM students WHERE id = ?`;
     const result = await connection.execute(statement, [id]);
 
     return result[0];
   }
+  // 修改某个学生的个人介绍
+  async updateIntro(student) {
+    const { stu_info, id } = student;
 
+    const statement = `UPDATE students SET stu_info = ? WHERE id = ?`;
+    const result = await connection.execute(statement, [stu_info, id]);
+
+    return result[0];
+  }
+  // 修改某个学生的照片
+  async updateImg(student) {
+    const { stu_img, id } = student;
+
+    const statement = `UPDATE students SET stu_img = ? WHERE id = ?`;
+    const result = await connection.execute(statement, [stu_img, id]);
+
+    return result[0];
+  }
 }
 
 module.exports = new StuService();

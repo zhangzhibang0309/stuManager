@@ -34,9 +34,24 @@ class StuController {
   // 查询单个学生详细信息
   async queryStuDetail(ctx, next) {
     const student = ctx.params.id;
-    
 
     const result = await service.queryStuDetail(student);
+    // 返回数据
+    ctx.body = result;
+  }
+  // 修改某个学生的个人介绍
+  async updateIntro(ctx, next) {
+    const student = ctx.request.body;
+
+    const result = await service.updateIntro(student);
+    // 返回数据
+    ctx.body = result;
+  }
+  // 修改某个学生的照片
+  async updateImg(ctx, next) {
+    const student = ctx.request.body;
+
+    const result = await service.updateImg(student);
     // 返回数据
     ctx.body = result;
   }

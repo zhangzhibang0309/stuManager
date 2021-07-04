@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Index from "@/components/Index";
-import Login from "@/components/Login"
-import StuList from "@/components/StuList"
-import StuDetail from "@/components/StuDetail"
-import MajorCourse from "@/components/MajorCourse"
+import Login from "@/components/Login";
+import StuList from "@/components/StuList";
+import StuDetail from "@/components/StuDetail";
+import MajorCourse from "@/components/MajorCourse";
 import axios from "axios";
 
 Vue.use(axios);

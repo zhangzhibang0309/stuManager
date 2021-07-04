@@ -1,10 +1,15 @@
 <template>
   <div>
-    <div id="coursedisplay"><h1 >专业展示</h1></div>
-    
+    <div id="coursedisplay"><h1>专业展示</h1></div>
 
     <!-- 专业展示 -->
-    <div style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); width: 92%; margin: 0 auto;">
+    <div
+      style="
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        width: 92%;
+        margin: 0 auto;
+      "
+    >
       <el-table :data="tableData" stripe style="width: 100%">
         <el-table-column prop="id" label="学号" width="180"> </el-table-column>
         <el-table-column prop="name" label="专业名称" width="180">
@@ -15,9 +20,15 @@
       <el-button type="warning" round @click="addOpen">添加专业</el-button>
     </div>
 
-    <div id="coursedisplay"><h1 >课程展示</h1></div>
+    <div id="coursedisplay"><h1>课程展示</h1></div>
     <!-- 课程展示 -->
-    <div style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); width: 92%; margin: 0 auto;">
+    <div
+      style="
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        width: 92%;
+        margin: 0 auto;
+      "
+    >
       <el-table :data="tableData2" stripe style="width: 100%">
         <el-table-column prop="id" label="课程号" width="180">
         </el-table-column>
@@ -104,23 +115,20 @@ export default {
         .post("http://localhost:1123/majorcourse/addmajor", data)
         .then((res) => {
           console.log(res);
-          this.drawer1 = false;
+          location.reload();
         })
         .catch((err) => {});
-        
     },
-    addCourseConfirm(){
+    addCourseConfirm() {
       let data = this.formLabelAlign2;
 
       axios
         .post("http://localhost:1123/majorcourse/addcourse", data)
         .then((res) => {
-          console.log(res);
-        this.drawer2 = false;
-
+          location.reload();
         })
         .catch((err) => {});
-    }
+    },
   },
   created() {
     //查询专业
@@ -145,9 +153,9 @@ export default {
 
 
 <style scoped>
-#coursedisplay{
- margin-left: 5%;
- margin-top: 3%;
- margin-bottom: 1%;
+#coursedisplay {
+  margin-left: 5%;
+  margin-top: 3%;
+  margin-bottom: 1%;
 }
 </style>
