@@ -15,8 +15,7 @@
           <el-menu-item :index="'/studetail/' + item.id">{{item.name}}</el-menu-item>
         </div>
       </el-submenu>
-      <el-menu-item index="3">课程展示</el-menu-item>
-      <el-menu-item index="4">成绩查询</el-menu-item>
+      <el-menu-item index="/majorcourse">专业及其课程展示</el-menu-item>
       <el-menu-item index="5" disabled>选课系统</el-menu-item>
     </el-menu>
 

@@ -4,6 +4,7 @@ import Index from "@/components/Index";
 import Login from "@/components/Login"
 import StuList from "@/components/StuList"
 import StuDetail from "@/components/StuDetail"
+import MajorCourse from "@/components/MajorCourse"
 import axios from "axios";
 
 Vue.use(axios);
@@ -35,6 +36,11 @@ export default new Router({
       path: "/studetail/:id",
       name: "StuDetail",
       component: StuDetail
+    },
+    {
+      path: "/majorcourse",
+      name: "MajorCourse",
+      component: MajorCourse
     }
   ]
 });

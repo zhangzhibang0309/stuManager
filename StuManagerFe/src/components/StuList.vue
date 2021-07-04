@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 学生信息展示表格 -->
-    <div>
-      <el-table :data="tableData" stripe style="width: 100%">
+    <div style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); width: 92%; margin: 0 auto;">
+      <el-table  :data="tableData" stripe >
         <el-table-column prop="id" label="id"> </el-table-column>
         <el-table-column prop="name" label="姓名"> </el-table-column>
         <el-table-column prop="age" label="年龄"> </el-table-column>
@@ -46,7 +46,7 @@
     </div>
 
     <!-- drawer -->
-    <div>
+    <div >
       <!-- 修改学生信息 -->
       <el-drawer title="我是标题" :visible.sync="drawer" :with-header="false">
         <!-- 修改表单 -->
