@@ -1,10 +1,12 @@
 <template>
-  <div>index</div>
+  <div >
+    <img  src="https://seopic.699pic.com/photo/40192/4801.jpg_wh1200.jpg" alt="">
+
+  </div>
 </template>
 
 <script>
 import axios from "axios";
-
 export default {
   name: "Index",
   data() {
@@ -17,4 +19,8 @@ export default {
 
 
 <style scoped>
+img {
+  width: 100%;
+  height: 91.4vh;
+}
 </style>
